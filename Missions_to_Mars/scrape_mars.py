@@ -9,6 +9,7 @@ import time
 # using similar code from class activities
 
 def init_browser():
+    # executable_path = {'executable_path': 'C:/Program Files/chromedriver_win32/chromedriver.exe'}
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
@@ -113,12 +114,12 @@ def scrape():
         
     # return one Python dictionary containing all of the scraped data
     # create dictionary to hold the obtained Mars' data
-    mars_scraped_data = {
+    mars_scraped_data={
         "news_title": news_title,
         "paragraph" : paragraph,
         "featured_image_url": featured_image_url,
         "marsfacts_html": facts_html,
-        "hemisphere_image_urls": hemisphere_img_urls
+        "hemisphere_image_urls": hemisphere_image_urls
     }
 
     # close the browser after scraping

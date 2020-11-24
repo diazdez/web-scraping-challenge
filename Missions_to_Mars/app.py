@@ -23,10 +23,11 @@ def index():
 # this route that will trigger the scrape function
 @app.route("/scrape")
 def scrape():
+    
     # run the scrape function for "scrape_mars.py"
     mars_scraped_data = scrape_mars.scrape()
 
-    # insert the mars_data in to the collection
+    # insert the mars_scraped_data in to the collection
     mongo.db.mars_collection.update({}, mars_scraped_data, upsert=True)
 
     # go back to the home/main page
