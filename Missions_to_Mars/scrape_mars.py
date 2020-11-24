@@ -3,15 +3,21 @@ from splinter import Browser
 from bs4 import BeautifulSoup as bs
 import requests
 import pandas as pd
-from selenium import webdriver
+# from webdriver_manager.chrome import ChromeDriverManager
+# from selenium import webdriver
 import time
 
 # using similar code from class activities
 
 def init_browser():
-    # executable_path = {'executable_path': 'C:/Program Files/chromedriver_win32/chromedriver.exe'}
-    executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
-    return Browser("chrome", **executable_path, headless=False)
+    # executable_path = {'executable_path': 'C:/Program Files/chromedriver_win32/chromedriver'}
+    # executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
+    # return Browser("chrome", **executable_path)
+    # executable_path = {"executable_path": ChromeDriverManager().install()}
+    # browser = Browser('chrome', **executable_path, headless=False)
+# C:\Users\diazd\.wdm\drivers
+    executable_path = {'executable_path': '/Users/diazd/Downloads/chromedriver_win32/chromedriver'}
+    return Browser("chrome", **executable_path)
 
 # create scrape function
 def scrape():
@@ -56,23 +62,23 @@ def scrape():
    
     # Mars facts
     # url for Mars's facts 
-    marsfacts_url  = "https://space-facts.com/mars/"
+    # marsfacts_url  = "https://space-facts.com/mars/"
 
-    # Use panda's `read_html` to parse the url
-    table = pd.read_html(marsfacts_url)
+    # # Use panda's `read_html` to parse the url
+    # table = pd.read_html(marsfacts_url)
 
-    # convert the 1st table to pandas df  
-    marsfacts_df = table[0]
+    # # convert the 1st table to pandas df  
+    # marsfacts_df = table[0]
 
-    #rename the columns
-    # rename the columns
-    marsfacts_df.columns=["Description", "Value"]
+    # #rename the columns
+    # # rename the columns
+    # marsfacts_df.columns=["Description", "Value"]
     
-    # reset the index for the df
-    marsfacts_df.set_index("Description", inplace=True)
+    # # reset the index for the df
+    # marsfacts_df.set_index("Description", inplace=True)
 
-    # convert df to an html table string
-    marsfacts_html = marsfacts_df.to_html()
+    # # convert df to an html table string
+    # marsfacts_html = marsfacts_df.to_html()
 
     # Mars Hemispheres
     # get the url and open it with browser
@@ -114,11 +120,11 @@ def scrape():
         
     # return one Python dictionary containing all of the scraped data
     # create dictionary to hold the obtained Mars' data
-    mars_scraped_data={
+    mars_data={
         "news_title": news_title,
         "paragraph" : paragraph,
         "featured_image_url": featured_image_url,
-        "marsfacts_html": facts_html,
+        # "marsfacts_html": facts_html,
         "hemisphere_image_urls": hemisphere_image_urls
     }
 
@@ -126,6 +132,6 @@ def scrape():
     browser.quit()
 
     # return results
-    return mars_scraped_data
+    return mars_data
 
 

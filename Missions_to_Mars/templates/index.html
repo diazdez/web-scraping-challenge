@@ -22,19 +22,19 @@
     <div class="container">
         <div class="col-md-12">
             <h2>Latest Mars News</h2>
-            <h4>{{ mars_scraped_data.news_title }}</h4>
-            <p>{{ mars_scraped_data.mars.paragraph }}</p>
+            <h4>{{ mars.news_title }}</h4>
+            <p>{{ mars.paragraph }}</p>
         </div>
 
         <div class="col-md-8">
             <h2>Featured Mars Image:</h2>
-            <img src="{{featured_image_url}}" width="720" height="650" alt="mars">
+            <img src="{{mars.featured_image_url}}" width="720" height="650" alt="mars">
         </div>
 
         <div class="col-md-4">
             <div class="table">
                 <h3>Mars Facts:</h3>
-                <p>{{facts_html|safe}}</p>
+                <p>{{mars.marsfacts_html|safe}}</p>
             </div>  
         </div>
     </div>
