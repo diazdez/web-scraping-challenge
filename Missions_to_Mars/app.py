@@ -24,6 +24,7 @@ def index():
 @app.route("/scrape")
 def scrape():
     mars_collection = mongo.db.mars_collection
+
     # run the scrape function for "scrape_mars.py"
     mars_scraped_data = scrape_mars.scrape()
 
@@ -36,3 +37,4 @@ def scrape():
 # run the app
 if __name__ == "__main__":
     app.run(debug=True)
+

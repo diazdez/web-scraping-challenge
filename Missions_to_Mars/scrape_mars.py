@@ -15,7 +15,6 @@ def init_browser():
     # return Browser("chrome", **executable_path)
     # executable_path = {"executable_path": ChromeDriverManager().install()}
     # browser = Browser('chrome', **executable_path, headless=False)
-# C:\Users\diazd\.wdm\drivers
     executable_path = {'executable_path': '/Users/diazd/Downloads/chromedriver_win32/chromedriver'}
     return Browser("chrome", **executable_path)
 
@@ -34,7 +33,7 @@ def scrape():
     html = browser.html
     soup = bs(html, "html.parser")
 
-    # Mars latest news
+    # --- MARS LATEST NEWS---
     # obtain the latest news title and paragraph
     data = soup.find("li", class_="slide")
     news_title = data.find("div", class_="content_title").a.text
@@ -60,27 +59,27 @@ def scrape():
     # create the url for the image
     featured_image_url = "https://www.jpl.nasa.gov" + image
    
-    # Mars facts
+    # ---MARS FACTS---
     # url for Mars's facts 
-    # marsfacts_url  = "https://space-facts.com/mars/"
+    marsfacts_url  = "https://space-facts.com/mars/"
 
     # # Use panda's `read_html` to parse the url
-    # table = pd.read_html(marsfacts_url)
+    table = pd.read_html(marsfacts_url)
 
-    # # convert the 1st table to pandas df  
-    # marsfacts_df = table[0]
+    # convert the 1st table to pandas df  
+    marsfacts_df = table[0]
 
-    # #rename the columns
-    # # rename the columns
-    # marsfacts_df.columns=["Description", "Value"]
+    #rename the columns
+    # rename the columns
+    marsfacts_df.columns=["Description", "Value"]
     
-    # # reset the index for the df
-    # marsfacts_df.set_index("Description", inplace=True)
+    # reset the index for the df
+    marsfacts_df.set_index("Description", inplace=True)
 
-    # # convert df to an html table string
-    # marsfacts_html = marsfacts_df.to_html()
+    # convert df to an html table string
+    marsfacts_html = marsfacts_df.to_html()
 
-    # Mars Hemispheres
+    # ---MARS HEMISPHERES---
     # get the url and open it with browser
     hemispheres_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(hemispheres_url)
@@ -120,11 +119,11 @@ def scrape():
         
     # return one Python dictionary containing all of the scraped data
     # create dictionary to hold the obtained Mars' data
-    mars_data={
+    mars_data= {
         "news_title": news_title,
         "paragraph" : paragraph,
         "featured_image_url": featured_image_url,
-        # "marsfacts_html": facts_html,
+        "marsfacts_html": marsfacts_html,
         "hemisphere_image_urls": hemisphere_image_urls
     }
 

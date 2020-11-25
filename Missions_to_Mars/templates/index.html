@@ -14,6 +14,7 @@
     <div class="container-fluid">
         <div class="jumbotron text-center">
             <h1>Mission to Mars</h1>
+            <!-- button added w/the link to mars scrape -->
             <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
         </div>
     </div>
@@ -22,19 +23,19 @@
     <div class="container">
         <div class="col-md-12">
             <h2>Latest Mars News</h2>
-            <h4>{{ mars.news_title }}</h4>
+            <h3>{{ mars.news_title }}</h3>
             <p>{{ mars.paragraph }}</p>
         </div>
 
         <div class="col-md-8">
             <h2>Featured Mars Image:</h2>
-            <img src="{{mars.featured_image_url}}" width="720" height="650" alt="mars">
+            <img src="{{mars.featured_image_url}}"  class="img-responsive">
         </div>
 
         <div class="col-md-4">
             <div class="table">
                 <h3>Mars Facts:</h3>
-                <p>{{mars.marsfacts_html|safe}}</p>
+                <p>{{mars.marsfacts_html | safe}}</p>
             </div>  
         </div>
     </div>
@@ -55,4 +56,12 @@
             </div>   
     </div>
 </body>
+
+<footer>
+    <br>
+    <div style="color: rgb(133, 0, 0)">Web Scraping Homework - Mission to Mars: <a style= "font-style: italic; color: darkred;"> DESIREE DIAZ  </a>
+    <hr>
+</div>
+</footer>
+
 </html>
